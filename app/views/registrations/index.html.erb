@@ -1,47 +1,66 @@
 
-<body>
     <section class = "title">
         <div class="title">
             Register Form
         </div>
     </section>
-    <section class = "fullname">
-        <div class ="firstname">
-            <label for="firstname">First Name:</label>
-            <input type="text">
-        </div>
-        <div class ="lastname">
-            <label for="lastname">Last Name:</label>
-            <input type="text">
-        </div>
-    </section>
-    <section class ="personal-detail">
-        <div class ="birthday">
-            
-            <label for="timestamp">Select Date and Time:</label>
-            <input type="datetime-local" id="timestamp" name="timestamp">
-        </div>
-        <div class ="gender">
-            <label for="gender">Gender:</label>
-            <div class="btn-group">
-                <button type="button">Male</button>
-                <button type="button">Female</button>
+<%= form_with model: @user, url: register_path do |form| %>
+    <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <% @user.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <% end %>
+    <div class="form">
+        <section class = "fullname">
+            <div class ="firstname">
+                <label for="firstname">First Name:</label>
+                <%= form.text_field :firstname, class: "form-control", placeholder: "quayyyyyyyy" %>
             </div>
+            <div class ="lastname">
+                <label for="lastname">Last Name:</label>
+                <%= form.text_field :lastname, class: "form-control", placeholder: "quayyyyyyyy" %>
+            </div>
+        </section>
+        <section class ="personal-detail">
+            <div class ="birthday">
+                
+                <label for="timestamp">Birthday:</label>
+                <%= form.date_field :birthday, class: "form-control", placeholder: "quayyyyyyyy" %>
+            </div>
+            <div class ="gender">
+                <label for="gender">Gender:</label>
+                <div class="btn-group">
+                    <div class ="male-choice">
+                        <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option1' %>
+                        <%= form.label :gender, 'Male', value: 'Male', for: 'option1' %>
+                    </div>
+                    
+                    <div class ="male-choice">
+                        <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option2' %>
+                        <%= form.label :gender, 'Female', value: 'Female', for: 'option2' %>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact">
+            <div class ="email">
+                <label for="email">Email:</label>
+                <%= form.text_field :email, class: "form-control", placeholder: "quayyyyyyyy" %>
+            </div>
+            <div class ="phonenumber">
+                <label for="phonenumber">Phonenumber:</label>
+                <%= form.text_field :phonenumber, class: "form-control", placeholder: "quayyyyyyyy" %>
+            </div>
+        </section>
+        <section class="subject">
+            <%= form.label :subject, 'Subject' %>
+            <%= form.select :subject, options_for_select(@subjects), { prompt: 'Choose a role' }, class: 'form-control' %>
+            
+        </section>
+        <div class="submit">
+            <%= form.submit "Submit" %>
         </div>
-    </section>
-    <section class ="contact">
-        <div class ="email">
-            <label for="email">Email:</label>
-            <input type="text">
-        </div>
-        <div class ="phonenumber">
-            <label for="phonenumber">Phonenumber:</label>
-            <input type="text">
-        </div>
-    </section>
-    <section class="subject">
-        <label for="subject">Subject:</label>
-        <input type="text">
-        
-    </section>
-</body>
+    </div> 
+<% end %>
