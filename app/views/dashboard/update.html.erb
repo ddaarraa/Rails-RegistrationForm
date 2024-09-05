@@ -1,15 +1,14 @@
-
-<section class="dashboard">
+<section class="dashboard"></section>
     <%= link_to 'Dashboard', root_path %>
 </section>
 
 <section class = "title">
     <div class="title">
-        Register Form
+        Update User
     </div>
 </section>
 
-<%= form_with model: @user, url: register_path do |form| %>
+<%= form_with model: @user, url: update_action_path(@user) do |form| %>
     <% if @user.errors.any? %>
     <div class="alert alert-danger">
       <% @user.errors.full_messages.each do |message| %>
@@ -38,13 +37,13 @@
                 <label for="gender">Gender:</label>
                 <div class="btn-group">
                     <div class ="male-choice">
-                        <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option1' %>
-                        <%= form.label :gender, 'Male', value: 'Male', for: 'option1' %>
+                        <%= form.radio_button :gender, 'Male', checked: @user.gender == 'Male', class: 'form-check-input', id: 'option1' %>
+                        <%= form.label :gender, 'Male', for: 'option1' %>
                     </div>
                     
                     <div class ="male-choice">
-                        <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option2' %>
-                        <%= form.label :gender, 'Female', value: 'Female', for: 'option2' %>
+                        <%= form.radio_button :gender, 'Female', checked: @user.gender == 'Female', class: 'form-check-input', id: 'option1' %>
+                        <%= form.label :gender, 'Female', for: 'option1' %>
                     </div>
                 </div>
             </div>
@@ -61,7 +60,7 @@
         </section>
         <section class="subject">
             <%= form.label :subject, 'Subject' %>
-            <%= form.select :subject, options_for_select(@subjects), { prompt: 'Choose a role' }, class: 'form-control' %>
+            <%= form.select :subject, options_for_select(@subjects, @user.subject), { prompt: 'Choose a role' }, class: 'form-control' %>
             
         </section>
         <div class="submit">

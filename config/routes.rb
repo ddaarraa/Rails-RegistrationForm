@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :delete, :show, :edit, :update, :destroy]
 
-  root 'registrations#index'
-  get  "dashboard", to: "dashboard#index"
+  root to: "dashboard#index"
+  get 'register', to: 'registrations#index' , as: 'register'
   post 'register', to: 'registrations#create'
+  get 'update/:id', to: 'dashboard#update', as: 'update'
   delete 'delete/:id', to: 'dashboard#delete' , as: "custom_delete"
-
+  patch  '/update/:id', to: 'dashboard#update_action', as:"update_action"
 end

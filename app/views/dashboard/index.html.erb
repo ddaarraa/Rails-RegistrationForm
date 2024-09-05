@@ -5,7 +5,9 @@
 </div>
 
 <h1>All Users</h1>
-
+<section class="register">
+    <%= link_to 'Register', register_path %>
+</section>
 <table class="table">
   <thead>
     <tr>
@@ -34,9 +36,8 @@
         <td><%= user.subject %></td>
         <td><%= user.created_at %></td>
         <td>
-          <%= link_to 'Show', user_path(user) %>
-          <%= link_to 'Edit', edit_user_path(user) %>
-          <%= button_to 'Delete', custom_delete_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to 'Edit', update_path(user), method: :get %>
+          <%= button_to 'Delete', custom_delete_path(user), method: :delete, class: 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>
