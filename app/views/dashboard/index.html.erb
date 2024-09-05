@@ -1,0 +1,44 @@
+<div>
+    <% @users.each do |user| %>
+        <h1><%user.firstname%></h1>
+    <%end%>
+</div>
+
+<h1>All Users</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Firstname</th>
+      <th>lastname</th>
+      <th>Date of Birth</th>
+      <th>Gender</th>
+      <th>Email</th>
+      <th>Phonenumber</th>
+      <th>Subject</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.birthday %></td>
+        <td><%= user.gender %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phonenumber %></td>
+        <td><%= user.subject %></td>
+        <td><%= user.created_at %></td>
+        <td>
+          <%= link_to 'Show', user_path(user) %>
+          <%= link_to 'Edit', edit_user_path(user) %>
+          <%= button_to 'Delete', custom_delete_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

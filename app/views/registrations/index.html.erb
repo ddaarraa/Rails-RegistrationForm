@@ -1,9 +1,10 @@
 
-    <section class = "title">
-        <div class="title">
-            Register Form
-        </div>
-    </section>
+<section class = "title">
+    <div class="title">
+        Register Form
+    </div>
+</section>
+
 <%= form_with model: @user, url: register_path do |form| %>
     <% if @user.errors.any? %>
     <div class="alert alert-danger">
