@@ -1,0 +1,47 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore cache.
+*.swp
+*.swo
+.cache
+.byebug_history
+
+# Ignore application-specific database files.
+*.sqlite3
+*.sqlite3-journal
+
+# Ignore uploaded files in development.
+storage/*
+!/storage/.keep
+
+# Ignore the generated schema file for Active Record.
+db/schema.rb
+db/structure.sql
+
+# Ignore test and development files.
+coverage/
+spec/reports/
+
+# Ignore system files.
+.DS_Store
+.idea/
+.vscode/
+.project
+.secret
+
+# Ignore node_modules and Yarn/Lockfiles.
+node_modules/
+yarn-error.log
+
+# Ignore environment variable files.
+.env
+.env.development
+.env.test
+.env.production
