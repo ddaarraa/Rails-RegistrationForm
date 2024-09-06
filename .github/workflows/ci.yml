@@ -18,16 +18,17 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.1'
+          ruby-version: '3.1' # Adjust this to your Ruby version
 
       - name: Install dependencies
         run: |
           gem install bundler
           bundle install
 
-      - name: Set up database
+      - name: Prepare the database
         run: |
-          bin/rails db:setup
+          bin/rails db:create
+          bin/rails db:migrate
 
       - name: Check for Rails app build issues
         run: |
