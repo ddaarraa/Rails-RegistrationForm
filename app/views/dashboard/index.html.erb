@@ -1,45 +1,45 @@
-<div>
-    <% @users.each do |user| %>
-        <h1><%user.firstname%></h1>
-    <%end%>
-</div>
 
-<h1>All Users</h1>
-<section class="register">
-    <%= link_to 'Register', register_path %>
-</section>
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Firstname</th>
-      <th>lastname</th>
-      <th>Date of Birth</th>
-      <th>Gender</th>
-      <th>Email</th>
-      <th>Phonenumber</th>
-      <th>Subject</th>
-      <th>Created At</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<section class="table-relate">
+  <section class="page-title">
+    <h1>All Users</h1>
+  </section>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.firstname %></td>
-        <td><%= user.lastname %></td>
-        <td><%= user.birthday %></td>
-        <td><%= user.gender %></td>
-        <td><%= user.email %></td>
-        <td><%= user.phonenumber %></td>
-        <td><%= user.subject %></td>
-        <td><%= user.created_at %></td>
-        <td>
-          <%= link_to 'Edit', update_path(user), method: :get %>
-          <%= button_to 'Delete', custom_delete_path(user), method: :delete, class: 'btn btn-danger' %>
-        </td>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Phonenumber</th>
+        <th>Subject</th>
+        <th>Created At</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.firstname %></td>
+          <td><%= user.lastname %></td>
+          <td><%= user.birthday %></td>
+          <td><%= user.gender %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phonenumber %></td>
+          <td><%= user.subject %></td>
+          <td><%= user.created_at %></td>
+          <td>
+            <%= link_to 'Edit', update_path(user), method: :get, class: 'btn btn-edit' %>
+            <%= button_to 'Delete', custom_delete_path(user), method: :delete, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<section class="register">
+  <%= link_to 'Register', register_path, class: 'register-link' %>
+</section>

@@ -1,13 +1,5 @@
 
-<section class="dashboard">
-    <%= link_to 'Dashboard', root_path %>
-</section>
 
-<section class = "title">
-    <div class="title">
-        Register Form
-    </div>
-</section>
 
 <%= form_with model: @user, url: register_path do |form| %>
     <% if @user.errors.any? %>
@@ -18,54 +10,81 @@
     </div>
     <% end %>
     <div class="form">
-        <section class = "fullname">
-            <div class ="firstname">
-                <label for="firstname">First Name:</label>
-                <%= form.text_field :firstname, class: "form-control", placeholder: "quayyyyyyyy" %>
-            </div>
-            <div class ="lastname">
-                <label for="lastname">Last Name:</label>
-                <%= form.text_field :lastname, class: "form-control", placeholder: "quayyyyyyyy" %>
-            </div>
-        </section>
-        <section class ="personal-detail">
-            <div class ="birthday">
-                
-                <label for="timestamp">Birthday:</label>
-                <%= form.date_field :birthday, class: "form-control", placeholder: "quayyyyyyyy" %>
-            </div>
-            <div class ="gender">
-                <label for="gender">Gender:</label>
-                <div class="btn-group">
-                    <div class ="male-choice">
-                        <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option1' %>
-                        <%= form.label :gender, 'Male', value: 'Male', for: 'option1' %>
+        
+        <div class="form-detail">
+            <section class = "title">
+                <div class="title">
+                    Registration
+                </div>
+            </section>
+            <section class = "fullname">
+                <div class="icon">
+                    <%= image_tag 'avatar.png',  alt: '', class: 'icon-image' %>
+                </div>
+                <div class="name">
+                    <div class ="firstname">
+                        <%= form.text_field :firstname, class: "form-control1", placeholder: "Firstname" %>
                     </div>
-                    
-                    <div class ="male-choice">
-                        <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option2' %>
-                        <%= form.label :gender, 'Female', value: 'Female', for: 'option2' %>
+                    <div class ="lastname">
+                        <%= form.text_field :lastname, class: "form-control1", placeholder: "Lastname" %>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="contact">
-            <div class ="email">
-                <label for="email">Email:</label>
-                <%= form.text_field :email, class: "form-control", placeholder: "quayyyyyyyy" %>
-            </div>
-            <div class ="phonenumber">
-                <label for="phonenumber">Phonenumber:</label>
-                <%= form.text_field :phonenumber, class: "form-control", placeholder: "quayyyyyyyy" %>
-            </div>
-        </section>
-        <section class="subject">
-            <%= form.label :subject, 'Subject' %>
-            <%= form.select :subject, options_for_select(@subjects), { prompt: 'Choose a role' }, class: 'form-control' %>
+            </section>
             
-        </section>
-        <div class="submit">
-            <%= form.submit "Submit" %>
+            <section class ="personal-detail">
+                
+                <div class ="birthday">
+                    <div class="icon">
+                        <%= image_tag 'birthday-cake.png',  alt: '', class: 'icon-image' %>
+                    </div>
+                    <%= form.date_field :birthday, class: "form-control2", placeholder: "dd/mm/yyyy", pattern:"\d{2}/\d{2}/\d{4}" %>
+                </div>
+                <div class ="gender">
+                    <div class="btn-group">
+                        <div class ="male-choice">
+                            <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option1' %>
+                            <%= form.label :gender, 'Male', value: 'Male', for: 'option1', class: 'form-check-input' %>
+                        </div>
+                        
+                        <div class ="male-choice">
+                            <%= form.radio_button :gender, 'Male', class: 'form-check-input', id: 'option2' %>
+                            <%= form.label :gender, 'Female', value: 'Female', for: 'option2', class: 'form-check-input' %>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="contact">
+                <div class="icon">
+                    <%= image_tag 'email.png',  alt: '', class: 'icon-image' %>
+                </div>
+                <div class ="email">
+                    <%= form.text_field :email, class: "form-control3", placeholder: "Email" %>
+                </div>
+            </section>
+            <section class="contact">
+                <div class="icon">
+                    <%= image_tag 'phone-call.png',  alt: '', class: 'icon-image' %>
+                </div>
+                <div class ="phonenumber">
+                    <%= form.text_field :phonenumber, class: "form-control3", placeholder: "PhoneNumber" %>
+                </div>
+            </section>
+            
+            <section class="subject">
+                <div class="icon">
+                    <%= image_tag 'book.png',  alt: '', class: 'icon-image' %>
+                </div>
+                <div class="dropdown">
+                    <%= form.select :subject, options_for_select(@subjects), { prompt: 'Subject' }, class: 'form-control4' %>
+                </div>
+                
+            </section>
+            <div class="submit">
+                <%= form.submit "Submit" %>
+            </div>
+            <section class="dashboard">
+                <%= link_to 'Dashboard', root_path %>
+            </section>
         </div>
     </div> 
 <% end %>
