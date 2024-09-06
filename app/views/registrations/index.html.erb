@@ -1,15 +1,15 @@
 
 
 
-<%= form_with model: @user, url: register_path do |form| %>
+<%= form_with model: @user, url: register_path , local: true do |form| %>
     <% if @user.errors.any? %>
-    <div class="alert alert-danger">
-      <% @user.errors.full_messages.each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
+        <div class="alert alert-danger">
+            <% @user.errors.full_messages.each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
     <% end %>
-    <div class="form">
+    <div class="container">
         
         <div class="form-detail">
             <section class = "title">
@@ -24,6 +24,11 @@
                 <div class="name">
                     <div class ="firstname">
                         <%= form.text_field :firstname, class: "form-control1", placeholder: "Firstname" %>
+                        
+                            <div class="error-message">
+                                <%= @error %>
+                            </div>
+                        
                     </div>
                     <div class ="lastname">
                         <%= form.text_field :lastname, class: "form-control1", placeholder: "Lastname" %>
@@ -75,16 +80,18 @@
                     <%= image_tag 'book.png',  alt: '', class: 'icon-image' %>
                 </div>
                 <div class="dropdown">
-                    <%= form.select :subject, options_for_select(@subjects), { prompt: 'Subject' }, class: 'form-control4' %>
+                    <%= form.select :subject, options_for_select(['Physics', 'Maths', 'Coding', 'Mechanicsm']), { prompt: 'Subject' }, class: 'form-control4' %>
                 </div>
                 
             </section>
-            <div class="submit">
-                <%= form.submit "Submit" %>
-            </div>
-            <section class="dashboard">
-                <%= link_to 'Dashboard', root_path %>
-            </section>
+            
+            
         </div>
+        <div class="submit">
+                <%= form.submit "Submit", class:"submit" %>
+            </div>
+        <section class="dashboard">
+                <%# <%= link_to 'Dashboard', root_path %> 
+        </section>
     </div> 
 <% end %>

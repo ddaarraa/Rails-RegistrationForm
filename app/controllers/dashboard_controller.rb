@@ -15,7 +15,7 @@ class DashboardController < ApplicationController
 
   def update
     user_id = params[:id]
-    @subjects = ['Physics', 'Maths', 'Coding']
+    @subjects = ['Physics', 'Maths', 'Coding', 'Mechanicsm']
     @user = User.find(user_id)
   end
   def update_action
@@ -24,7 +24,8 @@ class DashboardController < ApplicationController
       flash[:notice] = "User was successfully updated."
       redirect_to root_path
     else
-      flash[:alert] = "There was an error updating the user."
+      @subjects = ['Physics', 'Maths', 'Coding', 'Mechanicsm']
+      flash.now[:alert] = "There was an error updating the user."
       render :update
     end
   end

@@ -1,17 +1,21 @@
 class RegistrationsController < ApplicationController
-
+  \
   def index
+    @subjects = ['Physics', 'Maths', 'Coding', 'Mechanicsm']
     @user = User.new
-    @subjects = ['Physics', 'Maths', 'Coding']
+
   end
   def create
-
     @user = User.new(user_params)
+
     if @user.save
       # flash[:notice] = 'Account Create Successfully'
       redirect_to root_path, notice: "User was successfully created."
     else
-      flash[:alert] = "something wrong"
+      # flash[:alert] = "something wrong"
+      @subjects = ['Physics', 'Maths', 'Coding', 'Mechanicsm']
+
+      render :index
     end
 
   end
