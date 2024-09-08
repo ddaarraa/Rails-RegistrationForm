@@ -25,9 +25,7 @@
                     <div class ="firstname">
                         <%= form.text_field :firstname, class: "form-control1", placeholder: "Firstname" %>
                         
-                            <div class="error-message">
-                                <%= @error %>
-                            </div>
+                    
                         
                     </div>
                     <div class ="lastname">
@@ -80,7 +78,7 @@
                     <%= image_tag 'book.png',  alt: '', class: 'icon-image' %>
                 </div>
                 <div class="dropdown">
-                    <%= form.select :subject, options_for_select(['Physics', 'Maths', 'Coding', 'Mechanicsm']), { prompt: 'Subject' }, class: 'form-control4' %>
+                    <%= form.select :subject, options_for_select(@subjects), { prompt: 'Subject' }, class: 'form-control4' %>
                 </div>
                 
             </section>

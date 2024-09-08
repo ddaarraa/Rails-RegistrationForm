@@ -24,7 +24,7 @@ class DashboardController < ApplicationController
       flash[:notice] = "User was successfully updated."
       redirect_to root_path
     else
-      @subjects = ['Physics', 'Maths', 'Coding', 'Mechanicsm']
+      @subjects = ['Physics', 'Maths', 'Coding', 'Mechanic']
       flash.now[:alert] = "There was an error updating the user."
       render :update
     end

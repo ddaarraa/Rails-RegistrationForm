@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
   \
   def index
-    @subjects = ['Physics', 'Maths', 'Coding', 'Mechanicsm']
+    @subjects = ['Physics', 'Maths', 'Coding', 'Mechanic']
     @user = User.new
 
   end
@@ -13,7 +13,7 @@ class RegistrationsController < ApplicationController
       redirect_to root_path, notice: "User was successfully created."
     else
       # flash[:alert] = "something wrong"
-      @subjects = ['Physics', 'Maths', 'Coding', 'Mechanicsm']
+      @subjects = ['Physics', 'Maths', 'Coding', 'Mechanic']
 
       render :index
     end
